@@ -15,9 +15,7 @@ module DryController
     end
   end
 
-  protected
-
-  class << self
+  module ClassMethods
 
     def default_actions(*args)
       args.each do |meth|
@@ -37,9 +35,13 @@ module DryController
 
   def resource_class
     resource_name.classify.constantize
+  rescue NameError => e
+    return false
   end
 
   def resource
+    return unless resource_class
+
     unless obj = instance_variable_get("@#{resource_name}")
       obj ||= if params[:id].present?
         resource_class.where(id: params[:id]).first
@@ -59,6 +61,8 @@ module DryController
   end
 
   def collection
+    return unless resource_class
+
     unless objects = instance_variable_get("@#{collection_name}")
       objects = resource_class.all
       instance_variable_set("@#{collection_name}", objects)
