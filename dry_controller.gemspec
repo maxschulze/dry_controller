@@ -7,14 +7,14 @@ require "dry_controller/version"
 Gem::Specification.new do |s|
   s.name        = "dry_controller"
   s.version     = DryController::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of DryController."
-  s.description = "TODO: Description of DryController."
+  s.authors     = ["Max Schulze"]
+  s.email       = ["max@maxschulze.com"]
+  s.homepage    = "http://maxschulze.com"
+  s.summary     = "Simple dry controller as a basis for my projects."
+  s.description = "It creates some default methods and makes it easy to implement basic CRUD like behaviour."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.2.13"
 end
