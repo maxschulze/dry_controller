@@ -1,0 +1,2 @@
+module DryController
+end
