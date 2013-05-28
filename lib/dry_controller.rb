@@ -64,7 +64,7 @@ module DryController
     return unless resource_class
 
     unless objects = instance_variable_get("@#{collection_name}")
-      objects = resource_class.all
+      objects = resource_class.scoped
       instance_variable_set("@#{collection_name}", objects)
     end
 
