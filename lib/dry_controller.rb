@@ -1,3 +1,5 @@
+require 'dry_controller/errors/resource_not_found'
+
 module DryController
   extend ActiveSupport::Concern
 
@@ -44,7 +46,7 @@ module DryController
 
     unless obj = instance_variable_get("@#{resource_name}")
       obj ||= if params[:id].present?
-        resource_class.where(id: params[:id]).first
+        resource_class.find(params[:id])
       else
         resource_class.new(params[resource_name])
       end
